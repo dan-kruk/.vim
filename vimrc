@@ -5,6 +5,7 @@ set nocp
 execute pathogen#infect()
 syntax on "enable
 
+set hidden
 set nocompatible
 set backspace=indent,eol,start
 "set term=xterm-256
@@ -14,8 +15,8 @@ set t_Co=256 "for xoria256 colorscheme to work
 "set t_Sb=m
 "set t_Sf=m
 
-set backupdir=/tmp
-"set directory=.,./.backup,/tmp
+set backupdir=~/.backup
+set directory=~/.backup
 "
 set tabstop=8 shiftwidth=3 softtabstop=3
 "set tabstop=8 softtabstop=0 expandtab shiftwidth=3 smarttab
@@ -128,4 +129,11 @@ noremap <Right> <Nop>
 "nnoremap j <Nop>
 "nnoremap k <Nop>
 "nnoremap l <Nop>
+
+"disable go autoformat
+let g:go_fmt_autosave=0
+let g:go_asmfmt_autosave=0
+
+nmap =j :%!python -m json.tool<CR>:set syntax=json<CR>
+nmap =x :%!xmllint --pretty 1 -<CR>:filetype detect<CR>
 
